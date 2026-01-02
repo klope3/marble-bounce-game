@@ -6,15 +6,42 @@ public class GamePointsDisplay : MonoBehaviour
 {
     [SerializeField] private GamePoints points;
     [SerializeField] private TMPro.TextMeshProUGUI text;
+    [SerializeField] private TMPro.TextMeshProUGUI statsText;
+    [SerializeField] private float pointsRatePollingInterval;
+    private float timer;
+    private int pointsLastPoll;
+    private float highestPointsRate;
 
     public void Initialize()
     {
-        points.OnPointsChange += UpdateDisplay;
-        UpdateDisplay();
+        points.OnPointsChange += UpdateMainDisplay;
+        UpdateMainDisplay();
+        UpdateStatsDisplay();
     }
 
-    private void UpdateDisplay()
+    private void Update()
     {
+        timer += Time.deltaTime;
+        if (timer > pointsRatePollingInterval)
+        {
+            UpdateStatsDisplay();
+            timer = 0;
+        }
+    }
+
+    private void UpdateMainDisplay()
+    {
+
         text.text = $"${points.Points}";
+    }
+
+    private void UpdateStatsDisplay()
+    {
+        int delta = points.Points - pointsLastPoll;
+        pointsLastPoll = points.Points;
+        float changeRate = delta / pointsRatePollingInterval;
+        if (changeRate > highestPointsRate) highestPointsRate = changeRate;
+
+        statsText.text = $"${changeRate}/sec. (${highestPointsRate}/sec. max)";
     }
 }
