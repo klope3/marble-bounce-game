@@ -53,7 +53,7 @@ public class MarbleFlinger : MonoBehaviour
         GrabbedRb = hitInfo.collider.attachedRigidbody;
     }
 
-    private void StopFling()
+    public void StopFling()
     {
         GrabbedRb = null;
     }

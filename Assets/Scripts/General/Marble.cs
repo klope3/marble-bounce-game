@@ -18,4 +18,10 @@ public class Marble : MonoBehaviour
         gamePoints.Add(gem.Points);
         OnEarnPoints?.Invoke(gem.Points);
     }
+
+    public void CollectBounceFacePoints(BounceFace bounceFace)
+    {
+        gamePoints.Add(bounceFace.Value);
+        OnEarnPoints?.Invoke(bounceFace.Value);
+    }
 }
