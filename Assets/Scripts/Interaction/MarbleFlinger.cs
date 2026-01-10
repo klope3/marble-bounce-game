@@ -8,7 +8,7 @@ public class MarbleFlinger : MonoBehaviour
     [SerializeField] private float force;
     [SerializeField] private float damping;
     [SerializeField] private float maxDistance;
-    [SerializeField] private LayerMask marbleLayerMask;
+    [SerializeField] private LayerMask marbleGrabLayerMask;
     [SerializeField] private LayerMask aimingPlaneLayerMask;
     public Rigidbody GrabbedRb { get; private set; }
     public Vector3 DragVector { get; private set; }
@@ -47,10 +47,10 @@ public class MarbleFlinger : MonoBehaviour
     private void StartFling()
     {
         Ray ray = cam.ScreenPointToRay(InputActionsProvider.GetMousePosition());
-        bool hit = Physics.Raycast(ray, out RaycastHit hitInfo, 10000, marbleLayerMask);
+        bool hit = Physics.Raycast(ray, out RaycastHit hitInfo, 10000, marbleGrabLayerMask);
         if (!hit) return;
 
-        GrabbedRb = hitInfo.collider.attachedRigidbody;
+        GrabbedRb = hitInfo.collider.GetComponent<MarbleGrabZone>().MarbleRb;
         GrabbedRb.GetComponent<Marble>().ReceiveFlingerGrab();
     }
 

@@ -3162,9 +3162,9 @@ MonoBehaviour:
   force: 15
   damping: 2
   maxDistance: 10
-  marbleLayerMask:
+  marbleGrabLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   aimingPlaneLayerMask:
     serializedVersion: 2
     m_Bits: 0
