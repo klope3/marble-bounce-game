@@ -15,13 +15,17 @@ public class Marble : MonoBehaviour
 
     public void CollectGem(Gem gem)
     {
-        gamePoints.Add(gem.Points);
+        //gamePoints.Add(gem.Points);
         OnEarnPoints?.Invoke(gem.Points);
     }
 
-    public void CollectBounceFacePoints(BounceFace bounceFace)
+    public void CollectPointPickup(PointPickup pickup)
     {
-        gamePoints.Add(bounceFace.Value);
-        OnEarnPoints?.Invoke(bounceFace.Value);
+        gamePoints.Add(pickup.BaseValue, pickup.PointType);
+    }
+
+    public void ReceiveFlingerGrab()
+    {
+
     }
 }

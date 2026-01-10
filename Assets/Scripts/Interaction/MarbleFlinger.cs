@@ -51,6 +51,7 @@ public class MarbleFlinger : MonoBehaviour
         if (!hit) return;
 
         GrabbedRb = hitInfo.collider.attachedRigidbody;
+        GrabbedRb.GetComponent<Marble>().ReceiveFlingerGrab();
     }
 
     public void StopFling()

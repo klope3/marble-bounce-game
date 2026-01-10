@@ -25,4 +25,15 @@ public static class Utils
     {
         return Enumerable.Range(start, count).ToArray();
     }
+
+    public static GameObjectPool GetPoolWithId(string id)
+    {
+        GameObjectPool[] pools = GameObject.FindObjectsOfType<GameObjectPool>();
+        foreach (GameObjectPool p in pools)
+        {
+            if (p.Id == id) return p;
+        }
+        Debug.LogError($"GameObjectPool with id {id} not found.");
+        return null;
+    }
 }

@@ -4,13 +4,36 @@ using UnityEngine;
 
 public class GamePoints : MonoBehaviour
 {
-    public int Points { get; private set; } //this eventually will need to be some kind of BigNumber
+    private Dictionary<PointType, int> pointsDictionary;
     public System.Action OnPointsChange;
 
-    [Sirenix.OdinInspector.Button]
-    public void Add(int amount)
+    public enum PointType
     {
-        Points = Mathf.Clamp(Points + amount, 0, int.MaxValue);
+        One,
+        Two,
+        Three
+    }
+
+    private void InitializeDict()
+    {
+        pointsDictionary = new Dictionary<PointType, int>
+        {
+            { PointType.One, 0 },
+            { PointType.Two, 0 },
+            { PointType.Three, 0 },
+        };
+    }
+
+    [Sirenix.OdinInspector.Button]
+    public void Add(int amount, PointType type)
+    {
+        pointsDictionary[type] = Mathf.Clamp(pointsDictionary[type] + amount, 0, int.MaxValue);
         OnPointsChange?.Invoke();
+    }
+
+    public int GetPoints(PointType type)
+    {
+        if (pointsDictionary == null) InitializeDict();
+        return pointsDictionary[type];
     }
 }

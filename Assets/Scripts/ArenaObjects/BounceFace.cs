@@ -19,7 +19,7 @@ public class BounceFace : MonoBehaviour
         if (marble == null) return;
 
         marble.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);
-        marble.CollectBounceFacePoints(this);
+        //marble.CollectBounceFacePoints(this);
         Rigidbody marbleRb = marble.GetComponent<Rigidbody>();
         if (flinger.GrabbedRb == marbleRb) flinger.StopFling();
     }
