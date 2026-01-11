@@ -100,7 +100,7 @@ MonoBehaviour:
   <PointType>k__BackingField: 0
   <BaseValue>k__BackingField: 1
   pickupDelay: 0.5
-  lifespan: 5
+  lifespan: 10
   afterPickupDelay: 1
   OnPickedUp:
     m_PersistentCalls:

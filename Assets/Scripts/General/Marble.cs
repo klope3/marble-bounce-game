@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Marble : MonoBehaviour
 {
+    [field: SerializeField] public int BaseImpactDamage { get; private set; }
     private GamePoints gamePoints;
     public delegate void PointsEvent(int points);
     public event PointsEvent OnEarnPoints;

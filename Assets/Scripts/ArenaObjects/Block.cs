@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    [SerializeField, Tooltip("If the damage done would be below this amount, nothing happens.")] 
+    private int damageThreshold;
     [SerializeField] private RigidbodyExploder shardExploder;
     [field: SerializeField] public int HealthMax { get; private set; }
     public int Health { get; private set; }
@@ -20,19 +22,23 @@ public class Block : MonoBehaviour
         Marble marble = collision.collider.GetComponent<Marble>();
         if (marble == null) return;
 
-        int damage = CalculateDamageFromMarble(marble);
+        ContactPoint contact = collision.GetContact(0);
+        int damage = CalculateDamageFromMarble(marble, contact);
+        if (damage < damageThreshold) return;
         Health -= damage;
 
-        ContactPoint contact = collision.GetContact(0);
         shardExploder.transform.position = contact.point;
-        shardExploder.Explode();
+        shardExploder.Explode((float)damage / HealthMax);
 
         OnDamage?.Invoke(damage);
         if (Health <= 0) gameObject.SetActive(false);
     }
 
-    private int CalculateDamageFromMarble(Marble marble)
+    private int CalculateDamageFromMarble(Marble marble, ContactPoint contact)
     {
-        return 1;
+        Vector3 marbleVelocity = marble.GetComponent<Rigidbody>().velocity;
+        float normalSpeed = Mathf.Abs(Vector3.Dot(marbleVelocity, contact.normal));
+        int damage = Mathf.RoundToInt(marble.BaseImpactDamage * normalSpeed);
+        return damage;
     }
 }

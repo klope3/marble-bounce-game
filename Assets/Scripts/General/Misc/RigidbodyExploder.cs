@@ -22,9 +22,9 @@ public class RigidbodyExploder : MonoBehaviour
     }
 
     [Sirenix.OdinInspector.Button]
-    public void Explode()
+    public void Explode(float amountMultiplier)
     {
-        int count = Random.Range(minCount, maxCount);
+        int count = Mathf.RoundToInt(Mathf.Lerp(minCount, maxCount, amountMultiplier));
 
         for (int i = 0; i < count; i++)
         {

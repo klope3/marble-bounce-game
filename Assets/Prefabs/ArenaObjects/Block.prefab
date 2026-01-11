@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolId: shard
-  minCount: 8
-  maxCount: 15
+  minCount: 1
+  maxCount: 45
   minForce: 7
   maxForce: 10
   minTorque: -90
@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 8846833486756782420}
   - component: {fileID: 168628463302045324}
   - component: {fileID: 2565297266054738504}
+  - component: {fileID: 6578110658505811765}
   m_Layer: 0
   m_Name: Block
   m_TagString: Untagged
@@ -120,8 +121,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a5bf433e197da4f9c2cb2b70212f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageThreshold: 4
   shardExploder: {fileID: 4970363574642815273}
-  <HealthMax>k__BackingField: 10
+  <HealthMax>k__BackingField: 100
+--- !u!114 &6578110658505811765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6781062094362398943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5085ce27899ce4c41ba64fddeb27944e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  block: {fileID: 2565297266054738504}
+  maxColor: {x: 7, y: 15, z: 20, w: 0}
+  flashDuration: 0.5
+  meshRenderer: {fileID: 5133023742773358941}
 --- !u!1 &7965919256127806559
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b81209919c855ca408e0799017a7758c, type: 2}
+  - {fileID: 2100000, guid: fac2364ab5b88004cb177d2b4108a888, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
