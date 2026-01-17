@@ -9,12 +9,14 @@ public class Block : MonoBehaviour
     [SerializeField] private RigidbodyExploder shardExploder;
     [field: SerializeField] public int HealthMax { get; private set; }
     public int Health { get; private set; }
+    private BlockManager blockManager;
     public delegate void DamageEvent(int amount);
     public event DamageEvent OnDamage;
 
     private void Awake()
     {
         Health = HealthMax;
+        blockManager = FindObjectOfType<BlockManager>();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -31,7 +33,11 @@ public class Block : MonoBehaviour
         shardExploder.Explode((float)damage / HealthMax);
 
         OnDamage?.Invoke(damage);
-        if (Health <= 0) gameObject.SetActive(false);
+        if (Health <= 0)
+        {
+            gameObject.SetActive(false);
+            blockManager.RegisterBlockBroken(this);
+        }
     }
 
     private int CalculateDamageFromMarble(Marble marble, ContactPoint contact)

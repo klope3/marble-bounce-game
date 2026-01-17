@@ -5,7 +5,8 @@ using UnityEngine;
 public class GamePointsDisplay : MonoBehaviour
 {
     [SerializeField] private GamePoints points;
-    [SerializeField] private TMPro.TextMeshProUGUI text;
+    [SerializeField] private TMPro.TextMeshProUGUI point1Text;
+    [SerializeField] private TMPro.TextMeshProUGUI point2Text;
     [SerializeField] private TMPro.TextMeshProUGUI statsText;
     [SerializeField] private float pointsRatePollingInterval;
     //private float timer;
@@ -30,8 +31,8 @@ public class GamePointsDisplay : MonoBehaviour
 
     private void UpdateMainDisplay()
     {
-
-        text.text = $"${points.GetPoints(GamePoints.PointType.One)}";
+        point1Text.text = $"{points.GetPoints(GamePoints.PointType.One)}";
+        point2Text.text = $"{points.GetPoints(GamePoints.PointType.Two)}";
     }
 
     //private void UpdateStatsDisplay()
