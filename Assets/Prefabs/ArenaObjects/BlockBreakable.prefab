@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 2565297266054738504}
   - component: {fileID: 6578110658505811765}
   m_Layer: 0
-  m_Name: Block
+  m_Name: BlockBreakable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,9 +121,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a5bf433e197da4f9c2cb2b70212f9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageThreshold: 4
+  impactThreshold: 4
   shardExploder: {fileID: 4970363574642815273}
   <HealthMax>k__BackingField: 100
+  impactCausesDamage: 1
+  impactEarnsPoints: 0
 --- !u!114 &6578110658505811765
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,10 +13,10 @@ public class BlockFeedback : MonoBehaviour
 
     private void Awake()
     {
-        block.OnDamage += Block_OnDamage;
+        block.OnImpact += Block_OnImpact;
     }
 
-    private void Block_OnDamage(int amount)
+    private void Block_OnImpact(int amount)
     {
         float t = (float)amount / block.HealthMax;
         float tRemapped = Mathf.Pow(0.5f, -6 * t + 6);

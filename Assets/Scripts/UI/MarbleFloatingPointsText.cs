@@ -16,7 +16,7 @@ public class MarbleFloatingPointsText : MonoBehaviour
     private void Marble_OnEarnPoints(int points)
     {
         MMF_FloatingText floatingText = floatingTextPlayer.GetFeedbackOfType<MMF_FloatingText>();
-        floatingText.Value = $"+${points}";
+        floatingText.Value = $"+{points}";
         floatingTextPlayer.PlayFeedbacks();
     }
 }
