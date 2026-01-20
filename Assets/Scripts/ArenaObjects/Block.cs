@@ -44,6 +44,7 @@ public class Block : MonoBehaviour
         //shardExploder.transform.position = contact.point;
         //shardExploder.Explode((float)impact / HealthMax);
 
+        marble.ReceiveBlockImpact(this);
         OnImpact?.Invoke(impact);
         if (Health <= 0)
         {

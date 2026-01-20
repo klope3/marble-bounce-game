@@ -21,7 +21,6 @@ public class BlockFeedback : MonoBehaviour
         float t = (float)amount / block.HealthMax;
         float tRemapped = Mathf.Pow(0.5f, -6 * t + 6);
         Vector4 initialColor = Vector4.Lerp(Vector4.zero, maxColor, tRemapped);
-        Debug.Log("Tweening");
         DOTween.To(() => initialColor, (Vector4 colorHDR) => meshRenderer.material.SetColor(OVERLAY_ID, colorHDR), Vector4.zero, flashDuration);
     }
 }
