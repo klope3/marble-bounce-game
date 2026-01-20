@@ -25,12 +25,8 @@ public class Block : MonoBehaviour
         blockManager = FindObjectOfType<BlockManager>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void HandleCollision(Marble marble, ContactPoint contact)
     {
-        Marble marble = collision.collider.GetComponent<Marble>();
-        if (marble == null) return;
-
-        ContactPoint contact = collision.GetContact(0);
         int impact = CalculateImpactFromMarble(marble, contact);
         if (impact < impactThreshold) return;
 
@@ -54,6 +50,15 @@ public class Block : MonoBehaviour
             gameObject.SetActive(false);
             blockManager.RegisterBlockBroken(this);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Marble marble = collision.collider.GetComponent<Marble>();
+        if (marble == null) return;
+
+        ContactPoint contact = collision.GetContact(0);
+        HandleCollision(marble, contact);
     }
 
     private int CalculateImpactFromMarble(Marble marble, ContactPoint contact)

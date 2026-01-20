@@ -61,9 +61,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8846833486756782420}
-  - component: {fileID: 168628463302045324}
-  - component: {fileID: 2565297266054738504}
-  - component: {fileID: 6578110658505811765}
+  - component: {fileID: 6563958461284176058}
+  - component: {fileID: 8904765499669005321}
   m_Layer: 0
   m_Name: BlockBorder
   m_TagString: Untagged
@@ -88,28 +87,7 @@ Transform:
   - {fileID: 624159966349176505}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &168628463302045324
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6781062094362398943}
-  m_Material: {fileID: 13400000, guid: 733ae5c18aa1a8d489d9445f6d6628a1, type: 2}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &2565297266054738504
+--- !u!114 &6563958461284176058
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +104,7 @@ MonoBehaviour:
   <HealthMax>k__BackingField: 100
   impactCausesDamage: 0
   impactEarnsPoints: 1
---- !u!114 &6578110658505811765
+--- !u!114 &8904765499669005321
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5085ce27899ce4c41ba64fddeb27944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  block: {fileID: 2565297266054738504}
+  block: {fileID: 6563958461284176058}
   maxColor: {x: 7, y: 15, z: 20, w: 0}
   flashDuration: 0.5
   meshRenderer: {fileID: 5133023742773358941}
