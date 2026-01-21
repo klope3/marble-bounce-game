@@ -701,9 +701,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BaseImpactStrength>k__BackingField: 1
   <HealthMax>k__BackingField: 10
-  OnDamage:
-    m_PersistentCalls:
-      m_Calls: []
+  destroyDelay: 1
 --- !u!1 &6596073612557739652
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using Sirenix.OdinInspector;
 
 public class Marble : MonoBehaviour
 {
     [field: SerializeField] public int BaseImpactStrength { get; private set; }
     [field: SerializeField] public int HealthMax { get; private set; }
+    [SerializeField, Tooltip("How long to wait to destroy the object after health hits 0.")] private float destroyDelay;
     [ShowInInspector, DisplayAsString] public int Health { get; private set; }
     private GamePoints gamePoints;
     public delegate void PointsEvent(int points);
     public event PointsEvent OnEarnPoints;
-    public UnityEvent OnDamage;
+    public delegate void MarbleEvent(Marble marble);
+    public event MarbleEvent OnDamage;
+    public event MarbleEvent OnDestroy;
 
     private void Awake()
     {
@@ -42,12 +44,22 @@ public class Marble : MonoBehaviour
     public void ReceiveBlockImpact(Block block)
     {
         Health -= 1;
-        OnDamage?.Invoke();
-        if (Health <= 0) gameObject.SetActive(false);
+        OnDamage?.Invoke(this);
+        if (Health <= 0)
+        {
+            StartCoroutine(CO_Destroy());
+            OnDestroy?.Invoke(this);
+        }
     }
 
     public void ReceiveFlingerGrab()
     {
 
+    }
+
+    private IEnumerator CO_Destroy()
+    {
+        yield return new WaitForSeconds(destroyDelay);
+        Destroy(transform.parent.gameObject); //the Marble is a physics object inside a parent container
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SceneInitializer : MonoBehaviour
 {
+    [SerializeField] private GameState gameState;
     [SerializeField] private MarbleFlinger flinger;
     [SerializeField] private GamePointsDisplay pointsDisplay;
 
@@ -12,5 +13,6 @@ public class SceneInitializer : MonoBehaviour
         InputActionsProvider.Initialize();
         flinger.Initialize();
         pointsDisplay.Initialize();
+        gameState.Initialize();
     }
 }
