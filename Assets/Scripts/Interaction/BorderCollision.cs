@@ -8,7 +8,7 @@ public class BorderCollision : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Marble marble = collision.collider.GetComponent<Marble>();
+        MarbleObject marble = collision.collider.GetComponent<MarbleObject>();
         if (marble == null) return;
 
         ContactPoint contact = collision.GetContact(0);

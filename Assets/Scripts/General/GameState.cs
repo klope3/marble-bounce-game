@@ -43,6 +43,7 @@ public class GameState : MonoBehaviour
 
     private void NullStateToPlayState()
     {
+        marbleManager.PrepareForRound();
         marbleManager.SpawnMarble();
     }
 
@@ -61,6 +62,7 @@ public class GameState : MonoBehaviour
     {
         upgradeScreen.SetVisible(false);
         flinger.enabled = true;
+        marbleManager.PrepareForRound();
         marbleManager.SpawnMarble();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class MarblePickupGatherer : MonoBehaviour
 {
-    [SerializeField] private Marble marble;
+    [SerializeField] private MarbleObject marble;
 
     private void Awake()
     {

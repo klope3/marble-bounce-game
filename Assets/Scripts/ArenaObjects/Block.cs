@@ -25,7 +25,7 @@ public class Block : MonoBehaviour
         blockManager = FindObjectOfType<BlockManager>();
     }
 
-    public void HandleCollision(Marble marble, ContactPoint contact)
+    public void HandleCollision(MarbleObject marble, ContactPoint contact)
     {
         int impact = CalculateImpactFromMarble(marble, contact);
         if (impact < impactThreshold) return;
@@ -55,18 +55,18 @@ public class Block : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Marble marble = collision.collider.GetComponent<Marble>();
+        MarbleObject marble = collision.collider.GetComponent<MarbleObject>();
         if (marble == null) return;
 
         ContactPoint contact = collision.GetContact(0);
         HandleCollision(marble, contact);
     }
 
-    private int CalculateImpactFromMarble(Marble marble, ContactPoint contact)
+    private int CalculateImpactFromMarble(MarbleObject marble, ContactPoint contact)
     {
         Vector3 marbleVelocity = marble.GetComponent<Rigidbody>().velocity;
         float normalSpeed = Mathf.Abs(Vector3.Dot(marbleVelocity, contact.normal));
-        int damage = Mathf.RoundToInt(marble.BaseImpactStrength * normalSpeed);
+        int damage = Mathf.RoundToInt(marble.ImpactStrength * normalSpeed);
         return damage;
     }
 }

@@ -5,7 +5,7 @@ using MoreMountains.Feedbacks;
 
 public class MarbleFloatingPointsText : MonoBehaviour
 {
-    [SerializeField] private Marble marble;
+    [SerializeField] private MarbleObject marble;
     [SerializeField] private MMF_Player floatingTextPlayer;
 
     private void Awake()

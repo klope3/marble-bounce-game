@@ -5,6 +5,7 @@ using UnityEngine;
 public class GamePoints : MonoBehaviour
 {
     private Dictionary<PointType, int> pointsDictionary;
+    //YOU FORGOT EVENT AGAIN vvvvvvv
     public System.Action OnPointsChange;
 
     public enum PointType

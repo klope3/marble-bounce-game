@@ -6,14 +6,14 @@ using UnityEngine.UI;
 public class MarbleHealthDisplay : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
-    private Marble marble;
+    private MarbleObject marble;
 
     public void UpdateDisplay()
     {
         healthBar.fillAmount = (float)marble.Health / marble.HealthMax;
     }
 
-    public void LinkToMarble(Marble marble)
+    public void LinkToMarble(MarbleObject marble)
     {
         this.marble = marble;
         UpdateDisplay();
@@ -21,13 +21,13 @@ public class MarbleHealthDisplay : MonoBehaviour
         marble.OnDestroy += Marble_OnDestroy;
     }
 
-    private void Marble_OnDestroy(Marble marble)
+    private void Marble_OnDestroy(MarbleObject marble)
     {
         marble.OnDamage -= Marble_OnDamage;
         marble.OnDestroy -= Marble_OnDestroy;
     }
 
-    private void Marble_OnDamage(Marble marble)
+    private void Marble_OnDamage(MarbleObject marble)
     {
         UpdateDisplay();
     }

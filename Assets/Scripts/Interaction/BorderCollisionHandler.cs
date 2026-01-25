@@ -11,7 +11,7 @@ public class BorderCollisionHandler : MonoBehaviour
     [SerializeField] private Transform topBorderBlocksParent;
     [SerializeField] private Transform bottomBorderBlocksParent;
 
-    public void HandleCollision(Marble marble, ContactPoint contact)
+    public void HandleCollision(MarbleObject marble, ContactPoint contact)
     {
         bool bottomBlock = contact.normal == Vector3.forward * -1;
         bool topBlock = contact.normal == Vector3.forward;

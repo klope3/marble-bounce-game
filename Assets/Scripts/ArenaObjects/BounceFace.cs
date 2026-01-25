@@ -15,7 +15,7 @@ public class BounceFace : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Marble marble = collision.collider.GetComponent<Marble>();
+        MarbleObject marble = collision.collider.GetComponent<MarbleObject>();
         if (marble == null) return;
 
         marble.GetComponent<Rigidbody>().AddForce(transform.forward * force, ForceMode.Impulse);

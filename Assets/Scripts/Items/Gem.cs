@@ -14,7 +14,7 @@ public class Gem : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Marble marble = other.GetComponent<Marble>();
+        MarbleObject marble = other.GetComponent<MarbleObject>();
         if (marble == null) return;
 
         marble.CollectGem(this);
