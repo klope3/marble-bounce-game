@@ -12,6 +12,7 @@ public class MarbleManager : MonoBehaviour
     [SerializeField] private Transform marblesParent;
     [SerializeField] private MarbleHealthDisplay marbleHealthDisplay;
     [SerializeField] private TempDataSO tempData;
+    public event System.Action<int> OnMarbleSkillUnlocked;
     public int MaxMarbles
     {
         get
@@ -55,6 +56,25 @@ public class MarbleManager : MonoBehaviour
         marble.SetMarbleData(marbleInventory[curMarbleIndex]);
         marbleHealthDisplay.LinkToMarble(marble);
         marble.OnDestroy += Marble_OnDestroy;
+    }
+
+    public Marble GetMarble(int index)
+    {
+        return marbleInventory[index];
+    }
+
+    [Button]
+    public void UnlockMarbleSkill(int marbleIndex, SkillTreeNodeSO skillNode)
+    {
+        Marble marble = marbleInventory[marbleIndex];
+        if (marble.HasSkill(skillNode)) return;
+
+        bool canAfford = gamePoints.GetPoints(GamePoints.PointType.One) >= tempData.MarbleSkillCost;
+        if (!canAfford) return;
+
+        marble.UnlockSkill(skillNode);
+        gamePoints.Add(-1 * tempData.MarbleSkillCost, GamePoints.PointType.One);
+        OnMarbleSkillUnlocked?.Invoke(marbleIndex);
     }
 
     public void AddMarbleToInventory(Marble marble, int cost)

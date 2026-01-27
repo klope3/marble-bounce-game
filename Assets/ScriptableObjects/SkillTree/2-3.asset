@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae0b4835767ae74458c5bc4e5fa429c5, type: 3}
-  m_Name: TempData
+  m_Script: {fileID: 11500000, guid: eee34bce2450d904b9a6bdcf1c8aafcf, type: 3}
+  m_Name: 2-3
   m_EditorClassIdentifier: 
-  NewMarbleCost: 30
-  NewMarbleBaseHealth: 10
-  NewMarbleBaseImpact: 1
-  MarbleInventoryLimit: 6
-  MarbleSkillCost: 15
+  <SkillName>k__BackingField: 2-2
+  <GridPosition>k__BackingField: {x: 3, y: 4}
+  <Children>k__BackingField: []

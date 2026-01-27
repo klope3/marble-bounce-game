@@ -10,4 +10,5 @@ public class TempDataSO : ScriptableObject
     [field: SerializeField] public int NewMarbleBaseHealth;
     [field: SerializeField] public int NewMarbleBaseImpact;
     [field: SerializeField] public int MarbleInventoryLimit;
+    [field: SerializeField] public int MarbleSkillCost;
 }

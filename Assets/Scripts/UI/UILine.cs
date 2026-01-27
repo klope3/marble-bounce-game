@@ -17,7 +17,7 @@ public class UILine : MonoBehaviour
         rt.parent = parent;
         rt.pivot = new Vector2(0, 0.5f);
         rt.sizeDelta = new Vector2(Vector2.Distance(start, end), thickness);
-        rt.anchoredPosition = Vector2.zero;
+        rt.anchoredPosition = start;
         rt.localEulerAngles = new Vector3(0, 0, Vector2.SignedAngle(Vector2.right, end - start));
 
         Image image = go.AddComponent<Image>();

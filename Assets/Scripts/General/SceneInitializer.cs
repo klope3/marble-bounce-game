@@ -9,6 +9,7 @@ public class SceneInitializer : MonoBehaviour
     [SerializeField] private GamePointsDisplay pointsDisplay;
     [SerializeField] private MarbleManager marbleManager;
     [SerializeField] private MarbleInventoryUI inventoryUI;
+    [SerializeField] private SkillTreeUI skillTreeUI;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class SceneInitializer : MonoBehaviour
         flinger.Initialize();
         pointsDisplay.Initialize();
         inventoryUI.Initialize();
+        skillTreeUI.Initialize();
         marbleManager.Initialize();
         gameState.Initialize();
     }

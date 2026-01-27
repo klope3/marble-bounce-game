@@ -5,7 +5,7 @@ using UnityEngine;
 public class TreeNode<T>
 {
     public T Data { get; private set; }
-    public List<TreeNode<T>> Children { get; private set; }
+    private List<TreeNode<T>> Children { get; set; }
 
     public TreeNode(T data)
     {

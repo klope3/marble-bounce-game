@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eee34bce2450d904b9a6bdcf1c8aafcf, type: 3}
-  m_Name: 0 2
+  m_Name: 2-1
   m_EditorClassIdentifier: 
-  <SkillName>k__BackingField: 0-2
-  <GridPosition>k__BackingField: {x: 1, y: 2}
+  <SkillName>k__BackingField: 2-1
+  <GridPosition>k__BackingField: {x: -1, y: 4}
   <Children>k__BackingField: []
